@@ -22,5 +22,12 @@ public class Main {
             System.out.println(erro.getMessage());
         }
 
+        try {
+            pedido1.removerObserver(null);
+
+        }catch(IllegalArgumentException erro) {
+            System.out.println(erro.getMessage());
+        }
+
     }
 }
