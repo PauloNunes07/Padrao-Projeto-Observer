@@ -47,10 +47,16 @@ public class Pedido implements PedidoSubject {
             observer.atualizar(this);
         }
     }
-
+    //  metodo de atualizar mais ele
     public void atualizarStatus(String novoStatus) {
+        List<String> permitidos = List.of("PAGO", "EM_SEPARACAO", "ENVIADO", "CANCELADO");
         if(novoStatus == null || novoStatus.isEmpty() || novoStatus.isBlank() ) {
-            throw new IllegalArgumentException("Status inválido! Não pode ser nulo, vazio ou conter apenas espaços.");        }
+            throw new IllegalArgumentException("Status inválido! Não pode ser nulo, vazio ou conter apenas espaços.");
+        }
+        else if (!permitidos.contains(novoStatus)) {
+            throw new IllegalArgumentException("Status inválido!, status desconhecido para o pedido");
+        }
+
         else {
             System.out.println("====================Atualizando o status do pedido para: " + novoStatus + "=============================");
             this.status = novoStatus;
