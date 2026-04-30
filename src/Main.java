@@ -24,11 +24,14 @@ public class Main {
         PedidoService.registrarObserver(pedido1, estoque);
         PedidoService.registrarObserver(pedido1, faturamento);
 
-        // mudando o statu s e testando a captura de erros caso for nulo ou não ser digitado nada
+        // mudando o status e do pedido
         PedidoService.atualizarStatusSeguro(pedido1, "PAGO");
         PedidoService.atualizarStatusSeguro(pedido1, "EM_SEPARACAO");
         PedidoService.atualizarStatusSeguro(pedido1, "ENVIADO");
         PedidoService.atualizarStatusSeguro(pedido1, "CANCELADO");
+
+        // testando as funcionalidades
+        System.out.println(" =================Testando funcionalidades opcionais do sistema ====================");
         PedidoService.atualizarStatusSeguro(pedido1, null);
         PedidoService.atualizarStatusSeguro(pedido1, "");
         PedidoService.atualizarStatusSeguro(pedido1, " ");
