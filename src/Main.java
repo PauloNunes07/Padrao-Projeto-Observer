@@ -25,14 +25,11 @@ public class Main {
         PedidoService.registrarObserver(pedido1, faturamento);
 
         // mudando o status
-        try {
-            pedido1.atualizarStatus("PAGO");
-            pedido1.atualizarStatus("EM_SEPARAÇÃO");
-            pedido1.atualizarStatus("ENVIADO");
-            pedido1.atualizarStatus("CANCELADO");
-        } catch(IllegalArgumentException erro) {
-            System.out.println(erro.getMessage());
-        }
+        PedidoService.atualizarStatusSeguro(pedido1, "PAGO");
+        PedidoService.atualizarStatusSeguro(pedido1, "EM_SEPARACAO");
+        PedidoService.atualizarStatusSeguro(pedido1, "ENVIADO");
+        PedidoService.atualizarStatusSeguro(pedido1, "CANCELADO");
+        PedidoService.atualizarStatusSeguro(pedido1, null);
 
         // Testando a remoção de observadores
         PedidoService.removerObserver(pedido1, email);

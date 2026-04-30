@@ -26,6 +26,7 @@ public class Pedido implements PedidoSubject {
 
         }
         observadores.add(observer);
+
     }
 
     @Override
@@ -37,7 +38,7 @@ public class Pedido implements PedidoSubject {
             throw new IllegalArgumentException("Não foi possivel remover o observador por ele não esta na lista");
 
         }
-        System.out.println("Obsservador removido com sucesso");
+        System.out.println("Observador removido com sucesso");
     }
 
     @Override

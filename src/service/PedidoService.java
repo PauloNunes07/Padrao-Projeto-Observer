@@ -21,4 +21,12 @@ public class PedidoService {
 
     }
 
+    public static void atualizarStatusSeguro(Pedido pedido, String novoStatus) {
+        try {
+            pedido.atualizarStatus(novoStatus);
+        } catch(IllegalArgumentException erro) {
+            System.out.println(erro.getMessage());
+        }
+    }
+
 }
