@@ -21,30 +21,27 @@ public class Pedido implements PedidoSubject {
 
     @Override
     public void adicionarObserver(PedidoObserver observer) {
-        if(observer != null) {
-            observadores.add(observer);
-        }
+        if(observer == null) {
+            throw new IllegalArgumentException("Não é possivel adicionar um observador nulo");
 
+        }
+        observadores.add(observer);
     }
 
     @Override
     public void removerObserver(PedidoObserver observer) {
-        boolean achou = false;
-        for(PedidoObserver pedido : observadores) {
-            if (pedido.equals(observer)) {
-                observadores.remove(observer);
-                achou = true;
-                break;
-            }
+        if(observer == null) {
+            throw new IllegalArgumentException("Não foi possivel remover o observer por ele ser nulo");
         }
-
-        if(achou == false) {
+        else if(!observadores.remove(observer)) {
             throw new IllegalArgumentException("Não foi possivel remover o observador por ele não esta na lista");
+
         }
+        System.out.println("Obsservador removido com sucesso");
     }
 
     @Override
-    public void notificarObserver() {
+    public void notificarObservers() {
         for(PedidoObserver observer : observadores) {
             observer.atualizar(this);
         }
@@ -56,7 +53,7 @@ public class Pedido implements PedidoSubject {
         else {
             System.out.println("====================Atualizando o status do pedido para: " + novoStatus + "=============================");
             this.status = novoStatus;
-            notificarObserver();
+            notificarObservers();
 
         }
     }
