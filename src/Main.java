@@ -17,22 +17,25 @@ public class Main {
         PedidoObserver estoque = new EstoqueService();
         PedidoObserver faturamento = new FaturamentoService();
 
-        // Adicionando observadores Observadores
+        // Adicionando Observadores
         PedidoService.registrarObserver(pedido1, email);
         PedidoService.registrarObserver(pedido1, log);
         PedidoService.registrarObserver(pedido1, dashboard);
         PedidoService.registrarObserver(pedido1, estoque);
         PedidoService.registrarObserver(pedido1, faturamento);
 
-        // mudando o status
+        // mudando o statu s e testando a captura de erros caso for nulo ou não ser digitado nada
         PedidoService.atualizarStatusSeguro(pedido1, "PAGO");
         PedidoService.atualizarStatusSeguro(pedido1, "EM_SEPARACAO");
         PedidoService.atualizarStatusSeguro(pedido1, "ENVIADO");
         PedidoService.atualizarStatusSeguro(pedido1, "CANCELADO");
         PedidoService.atualizarStatusSeguro(pedido1, null);
+        PedidoService.atualizarStatusSeguro(pedido1, "");
+        PedidoService.atualizarStatusSeguro(pedido1, " ");
 
-        // Testando a remoção de observadores
+        // Testando a remoção de observadores e tentando remover algo nulo
         PedidoService.removerObserver(pedido1, email);
+        PedidoService.removerObserver(pedido1,null);
 
     }
 }
